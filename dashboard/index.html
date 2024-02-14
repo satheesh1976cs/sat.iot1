@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Smart Garden - Dashboard</title>
+  <link rel="icon" type="image/vnd.microsoft.icon" href="images/favicon.ico">
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <!-- Loader -->
+  <div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+  </div>
+<!-- /Loader -->
+  <nav class="black" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img id="SAPlogo" src="images/SAP_2011_logo.svg"></a>
+      <ul class="right hide-on-med-and-down logoText">
+        <li><a href="#">Smart Garden Dashboard</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav logoText">
+        <li><a href="#">Dashboard</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  
+  <main class="grey lighten-4">
+      <div class="container">
+          <div class="section">
+              <div class="row">
+                    <!-- TODO WIDGET Card Parameter tanaman -->
+                    <div class="col s12">
+                        <div class="center">
+                            <h5 class="grey-text text-darken-2">
+                            Ideal Growth Conditions
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="col l3 m6 s6">
+                        <div class="card small">
+                            <div class="card-image">
+                                <img class="responsive-img" src="images/tomato.jpg">
+                                <span class="card-title">Tomatoes</span>
+                            </div>
+                            <div class="card-content" style="padding-top:4px">
+                                Temperature : 24-28°C
+                                <br>Humidity : 80%
+                                <br>Soil Moisture : 50%
+                                <br>Light Intensity : 10.000-30.000 lux
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l3 m6 s6">
+                        <div class="card small">
+                            <div class="card-image">
+                                <img class="responsive-img" src="images/corn.jpg">
+                                <span class="card-title">Corn</span>
+                            </div>
+                            <div class="card-content" style="padding-top:4px">
+                                Temperature : 21-27°C
+                                <br>Humidity : 80%
+                                <br>Soil Moisture : 50%
+                                <br>Light Intensity : 4.250-40.000 lux
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l3 m6 s6">
+                        <div class="card small">
+                            <div class="card-image">
+                                <img class="responsive-img" src="images/strawberry.jpg">
+                                <span class="card-title">Strawberry</span>
+                            </div>
+                            <div class="card-content" style="padding-top:4px">
+                                Temperature : 22-28°C <br>
+                                Humidity : 80-90% <br>
+                                Soil Moisture : 50% <br>
+                                Light Intensity : 20.000-40.000 lux
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l3 m6 s6">
+                        <div class="card small">
+                            <div class="card-image">
+                                <img class="responsive-img" src="images/pepper.jpg">
+                                <span class="card-title">Peppers</span>
+                            </div>
+                            <div class="card-content" style="padding-top:4px">
+                                Temperature : 15-25°C <br>
+                                Humidity : 76-77% <br>
+                                Soil Moisture : 50% <br>
+                                Light Intensity : 2000 - 30.000 lux
+                            </div>
+                        </div>
+                    </div>
+                    <!-- TODO Last update time -->
+                    <div class="col s12">
+                        <div class="center">
+                            <h5 class="grey-text text-darken-2">
+                            Actual Sensor Readings
+                            <span id="last_update_date"></span> <span id="last_update_time" style="font-weight:bold"></span></h5>
+                        </div>
+                    </div>
+
+                    <!-- WIDGET -->
+                    <div class="col m3 s6">
+                        <div class="card orange darken-1">
+                            <span class="white-text" style="margin:8px;font-size:0.9em">Light Intensity</span>
+                            <div class="card-content center" style="padding-top:0px">
+                                <span id="w_lux" class="white-text widget-value">
+                                  <div class="progress orange lighten-5"><div class="indeterminate orange lighten-1"></div></div>
+                                </span>
+                                <br>
+                                <span class="white-text widget-unit">Lux</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col m3 s6">
+                        <div class="card green lighten-1">
+                            <span class="white-text" style="margin:8px;font-size:0.9em">Moisture 1</span>
+                            <div class="card-content center" style="padding-top:0px">
+                                <span id="w_mos1" class="white-text widget-value">
+                                  <div class="progress orange lighten-5"><div class="indeterminate orange lighten-1"></div></div>
+                                </span>
+                                <br>
+                                <span class="white-text widget-unit">RH</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col m3 s6">
+                        <div class="card green darken-2">
+                            <span class="white-text" style="margin:8px;font-size:0.9em">Moisture 2</span>
+                            <div class="card-content center" style="padding-top:0px">
+                                <span id="w_mos2" class="white-text widget-value">
+                                  <div class="progress orange lighten-5"><div class="indeterminate orange lighten-1"></div></div>
+                                </span>
+                                <br>
+                                <span class="white-text widget-unit">RH</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col m3 s6">
+                        <div class="card blue darken-1">
+                            <span class="white-text" style="margin:8px;font-size:0.9em">Tank Water Level</span>
+                            <div class="card-content center" style="padding-top:0px">
+                                <span id="w_wlev" class="white-text widget-value">
+                                  <div class="progress orange lighten-5"><div class="indeterminate orange lighten-1"></div></div>
+                                </span>
+                                <br>
+                                <span class="white-text widget-unit">m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="center">
+                            <h5 class="grey-text text-darken-2">
+                            Controls
+                            <span id="last_update_date"></span> <span id="last_update_time" style="font-weight:bold"></span></h5>
+                        </div>
+                    </div>
+                    <div class="col m6 s12">
+                        <div class="card yellow darken-4">
+                            <span class="white-text" style="margin:8px;font-size:0.9em">LED Lights</span>
+                            <div class="card-content center" style="padding-top:0px">
+                                <span id="c_light" class="white-text widget-value">
+                                  <div class="progress orange lighten-5"><div class="indeterminate orange lighten-1"></div></div>
+                                </span>
+                                <br>
+                                <div class="switch">
+                                    <label class="white-text">
+                                        Off
+                                        <input type="checkbox">
+                                        <span class="lever black"></span>
+                                        On
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col m6 s12">
+                        <div class="card blue darken-4">
+                            <span class="white-text" style="margin:8px;font-size:0.9em">Water Pump</span>
+                            <div class="card-content center" style="padding-top:0px">
+                                <span id="c_pump" class="white-text widget-value">
+                                  <div class="progress orange lighten-5"><div class="indeterminate orange lighten-1"></div></div>
+                                </span>
+                                <br>
+                                <div class="switch">
+                                    <label class="white-text">
+                                        Off
+                                        <input type="checkbox">
+                                        <span class="lever black"></span>
+                                        On
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 center">
+                        <!-- GRAPH -->
+                        <div class="card">
+                            <div class="card-action">
+                                <span class="card-title activator grey-text text-darken-4">Historical Data</span>
+                            </div>
+                            <div class="card-content" style="padding-top: 0px;">
+                                <div id="chart-container" style="height: 100%;width:100%;min-width: 310px;">
+                                    <div class="progress orange lighten-5">
+                                        <div class="indeterminate orange lighten-1"></div>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+          </div>
+      </div>
+  </main>
+
+  <footer class="page-footer black">    
+    <div class="footer-copyright">
+      <div class="container white-text">
+      Made by <a class="orange-text text-lighten-3" href="http://sap.com">SAP</a>
+      </div>
+    </div>
+  </footer>
+
+  <!--  Scripts-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+  <script src="js/materialize.js"></script>
+  <<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>
